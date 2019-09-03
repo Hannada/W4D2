@@ -1,0 +1,36 @@
+<h1>Rent a cat</h1>
+
+<% kitty = @kitty %>
+
+<% action_url = cats_url %>
+<!-- What is the post action by default? /-->
+<form action="<%= cats_url %>" method="post">
+
+  <label for="name">Kitty Name</label>
+  <input id="name" type="text" name="kitty[name]" value="<%= kitty.name %>">
+
+  <br>
+
+  <label for="birth_date">Birth Date</label>
+  <input id="birth_date" type="date" name="kitty[birth_date]" value="<%= kitty.birth_date %>">
+
+  <br>
+
+  <label for="color">Color</label>
+  <select id="color" name="kitty[color]">
+    <option disabled selected >-- OPTION --</option>
+    <option value="black" <%= kitty.color == "black" ? "selected" : ""%> >black</option>
+    <option value="calico" <%= kitty.color == "calico" ? "selected" : ""%>>calico</option>
+    <option value="green" <%= kitty.color == "green" ? "selected" : ""%>>green</option>
+    <option value="peridot" <%= kitty.color == "peridot" ? "selected" : ""%>>peridot</option>
+  </select>
+
+  <br><br>
+
+  <label for="description">Description</label>
+  <textarea name="kitty[description]">
+    <%= kitty.description %>
+  </textarea>
+
+  <input type="submit" value="<%='add kitty'%>">
+</form>
